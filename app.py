@@ -63,16 +63,18 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        next_page = request.form.get("next")
 
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for("chat"))
+            return redirect(next_page or url_for("chat"))
 
         return "Invalid credentials!"
 
     return render_template("login.html")
+
 
 @app.route("/logout")
 @login_required
