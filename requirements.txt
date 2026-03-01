@@ -1,7 +1,8 @@
-flask
-flask-socketio
-flask-login
-flask-sqlalchemy
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-SocketIO
 eventlet
 gunicorn
-werkzeug
+Werkzeug
+
