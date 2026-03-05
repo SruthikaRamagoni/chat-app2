@@ -17,8 +17,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 
-socketio = SocketIO(app, cors_allowed_origins="*")
-
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*")
 # ---------------- DATABASE ---------------- #
 
 class User(UserMixin, db.Model):
@@ -103,5 +102,6 @@ def handle_private_message(data):
 
 if __name__ == "__main__":
     socketio.run(app)
+
 
 
